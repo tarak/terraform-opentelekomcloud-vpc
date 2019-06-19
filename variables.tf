@@ -28,6 +28,11 @@ variable "delimiter" {
   description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
 }
 
+variable "subnet_dns_servers" {
+  type        = map
+  description = "Specifies the DNS servers to use for subnet."
+}
+
 variable "enabled" {
   type        = bool
   default     = true

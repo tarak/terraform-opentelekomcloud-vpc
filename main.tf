@@ -21,7 +21,7 @@ module "subnet_label" {
 }
 
 resource "opentelekomcloud_vpc_v1" "this" {
-  count = "${var.enabled == "true" ? 1 : 0}"
+  count = var.enabled ? 1 : 0
   cidr  = var.cidr
   name  = module.vpc_label.id
 }
@@ -32,5 +32,6 @@ resource "opentelekomcloud_vpc_subnet_v1" "this" {
   cidr              = element(concat(var.subnets, [""]), count.index)
   gateway_ip        = element(concat(var.gateway_ips, [""]), count.index)
   name              = module.subnet_label.id
-  vpc_id            = opentelekomcloud_vpc_v1.this.id
+  vpc_id            = "${opentelekomcloud_vpc_v1.this.0.id}"
+  dns_list          = var.subnet_dns_servers[terraform.workspace]
 }
