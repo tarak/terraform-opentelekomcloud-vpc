@@ -39,11 +39,6 @@ variable "gateway_ips" {
   default = []
 }
 
-variable "name" {
-  type        = string
-  default     = ""
-  description = "Solution name, e.g. `app` or `jenkins`"
-}
 variable "namespace" {
   type        = string
   default     = ""
