@@ -51,19 +51,19 @@ module "vpc" {
 |------|-------------|:----:|:-----:|:-----:|
 | attributes | Additional attributes of the VPC label, e.g. `1`. | list | `[]` | no |
 | availability_zones | A list of availability zones in the region | list(string) | n/a | **yes** |
-| convert\_case | Determines wether to convert all bucket label fields to lower case. | string | `"true"` | no |
+| convert\_case | Determines wether to convert all VPC label fields to lower case. | string | `"true"` | no |
 | cidr | The cidr block of the desired VPC | string | n/a | **yes** |
-| delimiter | Delimiter to be used between `organization`, `name`, `stage` and `attributes` bucket label fields. | string | `"-"` | no |
+| delimiter | Delimiter to be used between `namespace`, `name`, `stage` and `attributes` VPC label fields. | string | `"-"` | no |
 | enabled | Set to `"false"` to prevent the module from creating any resources. | string | `"true"` | no |
 | gateway_ips | A list of gateway of the VPC subnets. | list(string) | n/a | **yes** |
 | namespace | The namespace or ID of the label, e.g. `example` or `Example Ltd.`. | string | n/a | no |
-| stage | The stage or environment name of the bucket label, e.g. `prod`, `staging`, `dev`, or `test`. | string | n/a | no |
+| stage | The stage or environment name of the VPC label, e.g. `prod`, `staging`, `dev`, or `test`. | string | n/a | no |
 | subnets | A list of subnets inside the VPC | list(string) | n/a | **yes** |
 | subnets_dhcp_enable | list(string) | list(bool) | [true, true, true] | no |
 | subnets_dns_list | A list of DNS servers to use for the subnets | list | `[]` | no |
 | subnets_primary_dns | A list of IP addresses of DNS server 1 on the subnets | list(string) | `[]` | no |
 | subnets_secondary_dns | A list of IP addresses of DNS server 2 on the subnets | list(string) | `[]` | no |
-| tags | Additional tags of the bucket label, e.g. `map("BusinessUnit","XYZ")`. | map | `{}` | no |
+| tags | Additional tags of the VPC label, e.g. `map("BusinessUnit","XYZ")`. | map | `{}` | no |
 
 ## Outputs
 
@@ -82,3 +82,4 @@ this repository.
 ## Authors
 
 * **Tarak Blah** - *Initial work*
+* **Thomas Heil** - *Contributor*
