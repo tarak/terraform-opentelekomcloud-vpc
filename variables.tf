@@ -7,7 +7,6 @@ variable "attributes" {
 variable "availability_zones" {
   description = "A list of availability zones in the region"
   type        = list(string)
-  default     = []
 }
 
 variable "convert_case" {
@@ -18,7 +17,6 @@ variable "convert_case" {
 
 variable "cidr" {
   type        = string
-  default     = ""
   description = "The cidr block of the desired VPC"
 }
 
@@ -35,8 +33,7 @@ variable "enabled" {
 }
 
 variable "gateway_ips" {
-  type    = list(string)
-  default = []
+  type = list(string)
 }
 
 variable "namespace" {
@@ -52,13 +49,12 @@ variable "stage" {
 }
 
 variable "subnets" {
-  description = "A list of public subnets inside the VPC"
+  description = "A list of subnets inside the VPC"
   type        = list(string)
-  default     = []
 }
 
 variable "subnets_dhcp_enable" {
-  type        = list(string)
+  type        = list(bool)
   description = "Specifies whether the DHCP function is enabled for the subnets"
   default = [
     true,

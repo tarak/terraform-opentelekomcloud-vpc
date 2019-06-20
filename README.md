@@ -35,10 +35,11 @@ module "vpc" {
     "10.1.3.0/16",
   ]
 
-  subnet_dns_servers = {
-    production = ["100.125.4.25", "8.8.8.8"],
-    dev        = ["100.125.4.25", "8.8.8.8"]
-  }
+  subnets_dns_list = [
+    ["100.125.4.25", "8.8.8.8"],
+    ["100.125.4.25", "8.8.8.8"],
+    ["100.125.4.25", "8.8.8.8"]
+  ]
 
 }
 
@@ -49,11 +50,19 @@ module "vpc" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | attributes | Additional attributes of the VPC label, e.g. `1`. | list | `[]` | no |
+| availability_zones | A list of availability zones in the region | list(string) | n/a | **yes** |
 | convert\_case | Determines wether to convert all bucket label fields to lower case. | string | `"true"` | no |
+| cidr | The cidr block of the desired VPC | string | n/a | **yes** |
 | delimiter | Delimiter to be used between `organization`, `name`, `stage` and `attributes` bucket label fields. | string | `"-"` | no |
 | enabled | Set to `"false"` to prevent the module from creating any resources. | string | `"true"` | no |
-| namespace | The namespace or ID of the label, e.g. `example` or `Example Ltd.`. | string | n/a | **no** |
-| stage | The stage or environment name of the bucket label, e.g. `prod`, `staging`, `dev`, or `test`. | string | n/a | **yes** |
+| gateway_ips | A list of gateway of the VPC subnets. | list(string) | n/a | **yes** |
+| namespace | The namespace or ID of the label, e.g. `example` or `Example Ltd.`. | string | n/a | no |
+| stage | The stage or environment name of the bucket label, e.g. `prod`, `staging`, `dev`, or `test`. | string | n/a | no |
+| subnets | A list of subnets inside the VPC | list(string) | n/a | **yes** |
+| subnets_dhcp_enable | list(string) | list(bool) | [true, true, true] | no |
+| subnets_dns_list | A list of DNS servers to use for the subnets | list | `[]` | no |
+| subnets_primary_dns | A list of IP addresses of DNS server 1 on the subnets | list(string) | `[]` | no |
+| subnets_secondary_dns | A list of IP addresses of DNS server 2 on the subnets | list(string) | `[]` | no |
 | tags | Additional tags of the bucket label, e.g. `map("BusinessUnit","XYZ")`. | map | `{}` | no |
 
 ## Outputs
@@ -62,8 +71,8 @@ module "vpc" {
 
 | Name | Description |
 |------|-------------|
-
-| id | Disambiguated ID of the module, based on the module label's `id`. |
+| vpc_id | The ID of the VPC |
+| subnet_ids | List of IDs of subnets |
 
 ## Versioning
 
