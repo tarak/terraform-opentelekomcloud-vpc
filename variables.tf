@@ -28,11 +28,6 @@ variable "delimiter" {
   description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
 }
 
-variable "subnet_dns_servers" {
-  type        = map
-  description = "Specifies the DNS servers to use for subnet."
-}
-
 variable "enabled" {
   type        = bool
   default     = true
@@ -60,6 +55,34 @@ variable "subnets" {
   description = "A list of public subnets inside the VPC"
   type        = list(string)
   default     = []
+}
+
+variable "subnets_dhcp_enable" {
+  type        = list(string)
+  description = "Specifies whether the DHCP function is enabled for the subnets"
+  default = [
+    true,
+    true,
+    true
+  ]
+}
+
+variable "subnets_dns_list" {
+  type        = list
+  default     = []
+  description = "A list of DNS servers to use for subnet"
+}
+
+variable "subnets_primary_dns" {
+  type        = list(string)
+  default     = []
+  description = "A list of IP addresses of DNS server 1 on the subnets"
+}
+
+variable "subnets_secondary_dns" {
+  type        = list(string)
+  default     = []
+  description = "A list of IP addresses of DNS server 2 on the subnet"
 }
 
 variable "tags" {
