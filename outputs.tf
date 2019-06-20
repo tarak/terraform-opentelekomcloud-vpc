@@ -7,3 +7,8 @@ output "subnet_ids" {
   description = "List of IDs of subnets"
   value       = var.enabled ? opentelekomcloud_vpc_subnet_v1.this.*.subnet_id : [""]
 }
+
+output "subnetv2_ids" {
+  description = "List of v2 IDs of subnets"
+  value       = var.enabled ? opentelekomcloud_vpc_subnet_v1.this.*.id : [""]
+}
