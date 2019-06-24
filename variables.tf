@@ -1,35 +1,29 @@
 variable "attributes" {
-  type        = list(string)
-  default     = []
-  description = "Additional attributes (e.g. `1`)"
+  type    = list(string)
+  default = []
 }
 
 variable "availability_zones" {
-  description = "A list of availability zones in the region"
-  type        = list(string)
+  type = list(string)
 }
 
 variable "convert_case" {
-  type        = bool
-  default     = true
-  description = "Convert fields to lower case"
+  type    = bool
+  default = true
 }
 
 variable "cidr" {
-  type        = string
-  description = "The cidr block of the desired VPC"
+  type = string
 }
 
 variable "delimiter" {
-  type        = string
-  default     = "-"
-  description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
+  type    = string
+  default = "-"
 }
 
 variable "enabled" {
-  type        = bool
-  default     = true
-  description = "Set to false to prevent the module from creating any resources"
+  type    = bool
+  default = true
 }
 
 variable "gateway_ips" {
@@ -37,25 +31,36 @@ variable "gateway_ips" {
 }
 
 variable "namespace" {
-  type        = string
-  default     = ""
-  description = "Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp'"
+  type    = string
+  default = ""
+}
+
+variable "nat_gateway_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "nat_gateway_pool" {
+  type    = string
+  default = "admin_external_net"
+}
+
+variable "nat_gateway_spec" {
+  type    = string
+  default = "3"
 }
 
 variable "stage" {
-  type        = string
-  default     = ""
-  description = "Stage, e.g. 'prod', 'staging', 'dev'"
+  type    = string
+  default = ""
 }
 
 variable "subnets" {
-  description = "A list of subnets inside the VPC"
-  type        = list(string)
+  type = list(string)
 }
 
 variable "subnets_dhcp_enable" {
-  type        = list(bool)
-  description = "Specifies whether the DHCP function is enabled for the subnets"
+  type = list(bool)
   default = [
     true,
     true,
@@ -64,25 +69,21 @@ variable "subnets_dhcp_enable" {
 }
 
 variable "subnets_dns_list" {
-  type        = list
-  default     = []
-  description = "A list of DNS servers to use for subnet"
+  type    = list
+  default = []
 }
 
 variable "subnets_primary_dns" {
-  type        = list(string)
-  default     = []
-  description = "A list of IP addresses of DNS server 1 on the subnets"
+  type    = list(string)
+  default = []
 }
 
 variable "subnets_secondary_dns" {
-  type        = list(string)
-  default     = []
-  description = "A list of IP addresses of DNS server 2 on the subnet"
+  type    = list(string)
+  default = []
 }
 
 variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "Additional tags (e.g. `map('BusinessUnit','XYZ')`"
+  type    = map(string)
+  default = {}
 }

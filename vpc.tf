@@ -36,5 +36,5 @@ resource "opentelekomcloud_vpc_subnet_v1" "this" {
   name              = join(var.delimiter, [module.subnet_label.id, element(concat(var.availability_zones, [""]), count.index)])
   primary_dns       = element(concat(var.subnets_primary_dns, [null]), count.index)
   secondary_dns     = element(concat(var.subnets_secondary_dns, [null]), count.index)
-  vpc_id            = "${opentelekomcloud_vpc_v1.this.0.id}"
+  vpc_id            = opentelekomcloud_vpc_v1.this.0.id
 }
