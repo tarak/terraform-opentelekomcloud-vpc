@@ -34,7 +34,8 @@ variable "enabled" {
 }
 
 variable "gateway_ips" {
-  type = list(string)
+  type    = list(string)
+  default = []
 }
 
 variable "namespace" {
@@ -70,6 +71,7 @@ variable "stage" {
 variable "subnets" {
   description = "A list of subnets inside the VPC."
   type        = list(string)
+  default     = []
 }
 
 variable "subnets_dhcp_enable" {
