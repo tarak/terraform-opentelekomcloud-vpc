@@ -58,7 +58,7 @@ variable "nat_gateway_pool" {
 
 variable "nat_gateway_spec" {
   type        = string
-  default     = "3"
+  default     = "1"
   description = "The specification of the nat gateway, valid values are 1, 2, 3 or 4."
 }
 
